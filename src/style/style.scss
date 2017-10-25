@@ -271,28 +271,154 @@ header{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        overflow: hidden;
     }
 
     #block-onas{
         width: 575px;
         position: relative;
+        padding-left: 208px;
 
         p.title{
             position: absolute;
             font-size: 36px;
             font-weight: 700;
             top: 0;
-            left: 0;
+            left: 20px;
             color: #fff;
-
-            &:before{
-                content: '';
-                display: block;
-            }
+            text-transform: uppercase;
+            padding-left: 90px;
+            height: 103px;
+            @include icon("about.png");
+            background-position: left center;
+            display: flex;
+            align-items: center;
         }
 
         >.content{
-            padding-left: 26px;
+            color: #fff;
+            font-size: 18px;
+            border-right: 1px dashed $c-primary;
+            padding: 18px 36px 16px 16px;
+
+            p{
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    #block-benefits{
+
+        >.content{
+
+            ul{
+                padding-right: 77px;
+                position: relative;
+
+                &:before{
+                    content: '';
+                    display: block;
+                    width: 950px;
+                    height: 950px;
+                    border: 1px dashed $c-primary;
+                    position: absolute;
+                    top: -130px;
+                    left: 288px;
+                    border-radius: 100%;
+                }
+
+                li{
+                    color: #fff;
+                    text-align: right;
+                    padding-right: 70px;
+                    position: relative;
+                    width: 440px;
+                    margin-bottom: 70px;
+
+                    &:before{
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+
+                    &:after{
+                        content: '';
+                        display: block;
+                        width: 42px;
+                        height: 42px;
+                        border: 1px dashed $c-round;
+                        border-radius: 100%;
+                        position: absolute;
+                        right: 0;
+                        top: calc(50% - 20px);
+                        transform-origin: 50% 50%;
+                        transform: translateY(-50%);
+                        animation: spin 40s infinite linear;
+                        @include icon("benefit.png");
+                        background: url('../icons/benefit.png') no-repeat center center, rgba($c-benefit, .5);
+                    }
+
+                    &:nth-of-type(1){
+                        padding-left: 82px;
+
+                        &:before{
+                            width: 149px;
+                            height: 43px;
+                            left: 0;
+                        }
+                    }
+
+                    &:nth-of-type(2){
+                        padding-left: 100px;
+                        width: 364px;
+
+                        &:before{
+                            width: 78px;
+                            height: 52px;
+                        }
+                    }
+
+                    &:nth-of-type(3){
+                        padding-left: 30px;
+                        width: 322px;
+
+                        &:before{
+                            width: 77px;
+                            height: 43px;
+                        }
+                    }
+
+                    &:nth-of-type(4){
+                        padding-left: 52px;
+                        width: 310px;
+
+                        &:before{
+                            width: 45px;
+                            height: 56px;
+                        }
+                    }
+
+                    @for $i from 1 through 4{
+
+                        &:nth-of-type(#{$i}){
+
+                            &:before{
+
+                                @include icon("icon__#{$i}.svg");
+                                background-size: cover;
+                                opacity: .25;
+                            }
+                        }
+                    }
+
+                    &:last-of-type{
+                        margin-bottom: 0;
+                    }
+                }
+            }
         }
     }
 }
