@@ -1,0 +1,7 @@
+general:
+  version: 1.x
+  css:
+    theme:
+      prod/style/style.css: {}
+  js:
+      prod/js/bundle.js: {}

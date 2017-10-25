@@ -1,0 +1,46 @@
+<header>
+    {% if page.header_logo %}
+        {{ page.header_logo }}
+    {% endif %}
+    <div class="container">
+        <div class="address">{{ page.header_contacts }}</div>
+        <div class="main-menu">
+            {{ page.header_menu }}
+            <div class="btns">
+                <a href="#" class="btn">mail_us</a>
+                <a href="#" class="btn">search</a>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="hero__slider">
+    <div class="container">
+        {{ page.slider }}
+    </div>
+</div>
+<div class="about_us">
+    <div class="container">
+        {{ page.about_us }}
+        {{ page.benefits }}
+    </div>
+</div>
+<div class="services">
+    {{ page.services }}
+</div>
+<footer>
+    {{ page.footer_map }}
+    <div class="container">
+        <div class="contacts">
+            {{ page.header_logo }}
+            {{ page.footer_contacts }}
+            <div class="copyright">
+                {{ page.footer_copyright }}
+                <div id="web-master">
+                    <a href="https://webmaster.kz">
+                        <img width="124" height="36" src="/{{ directory }}/prod/icons/web-master.svg" alt="web-master.kz">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

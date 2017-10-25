@@ -1,0 +1,21 @@
+name: webmaster
+type: theme
+description: A cuddly theme that offers extra fluffiness.
+core: 8.x
+libraries:
+  - webmaster/general
+
+regions:
+  header_logo: 'Logo in header'
+  header_contacts: 'Header contacts'
+  header_menu: 'Header menu'
+  slider: 'Slider'
+  about_us: 'Frontpage about us region'
+  benefits: 'Frontpage benefits'
+  services: 'Frontpage sevices'
+  sidebar: 'Sidebar'
+  content: 'Content'
+  footer_map: 'Footer map'
+  footer_contacts: 'Footer contacts'
+  footer_copyright: 'Footer copyright'
+  trush: 'Trash'
