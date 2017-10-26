@@ -12,6 +12,85 @@ body{
     position: relative;
     font: 400 16px 'Ubuntu';
     line-height: 1.2;
+    background: #f6f6f6;
+
+    &.adminimal-admin-toolbar{
+
+        .mobile__menu{
+            padding-top: 80px;
+
+            .close__btn{
+                top: 46px;
+            }
+        }
+    }
+}
+
+.mobile__menu{
+    background: #fff;
+    position: fixed;
+    transform: translate3d(-260px, 0, 0);
+    width: 260px;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 150;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(#000, .2);
+    display: none;
+
+    @include transite(all);
+    @include respond-to(768){
+        display: block;
+    }
+
+    &.active{
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+
+    .close__btn{
+        position: absolute;
+        top: 30px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+
+        .line{
+            opacity: 1;
+            height: 1px;
+            border-bottom: 2px solid $c-hover;
+            border-radius: 1.5px;
+            width: 20px;
+            position: absolute;
+            transform-origin: 50% 50%;
+            top: 50%;
+            left: 50%;
+
+            &:first-of-type{
+                transform: translate(-50%,-50%) rotate(-45deg);
+            }
+
+            &:last-of-type{
+                transform: translate(-50%,-50%) rotate(45deg);
+            }
+        }
+    }
+
+    nav{
+
+        li a{
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 22px;
+            display: block;
+
+            &.active{
+                font-weight: 700;
+                color: $c-hover;
+            }
+        }
+    }
 }
 
 header{
@@ -26,23 +105,56 @@ header{
     z-index: 100;
     transform: translateX(-50%);
 
+    @include respond-to(960){
+        width: 960px;
+    }
+    @include respond-to(768){
+        width: 768px;
+    }
+    @include respond-to(320){
+        width: 320px;
+    }
+
     .container{
         width: 580px;
         height: 112px;
+
+        @include respond-to(320){
+            width: 164px;
+            height: 39px;
+        }
     }
 
-    .address .content{
-        margin-top: 28px;
-        margin-bottom: 12px;
+    #block-webmaster-branding{
 
-        ul{
-            display: flex;
-            justify-content: flex-end;
-            font: 700 22px 'Ubuntu';
-            color: $c-accent;
+        @include respond-to(320){
+            width: 100px;
+        }
 
-            li:first-of-type{
-                margin-right: 28px;
+        img{
+            max-width: 100%;
+        }
+    }
+
+    .address{
+
+        @include respond-to(320){
+            display: none;
+        }
+
+        .content{
+            margin-top: 28px;
+            margin-bottom: 12px;
+
+            ul{
+                display: flex;
+                justify-content: flex-end;
+                font: 700 22px 'Ubuntu';
+                color: $c-accent;
+
+                li:first-of-type{
+                    margin-right: 28px;
+                }
             }
         }
     }
@@ -53,10 +165,44 @@ header{
         align-items: center;
         height: 36px;
 
+        @include respond-to(768){
+            justify-content: flex-end;
+        }
+
+        #block-catalog-link--2{
+            display: none;
+
+            @include respond-to(768){
+                display: block;
+
+                >.content{
+                    margin-right: 50px;
+
+                    @include respond-to(320){
+                        margin-right: 0;
+                        width: 68px;
+                    }
+
+                    a{
+                        font-size: 18px;
+
+                        @include respond-to(320){
+                            font-size: 11px;
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+
         nav >ul{
             display: flex;
             justify-content: space-between;
             width: 440px;
+
+            @include respond-to(768){
+                display: none;
+            }
         }
 
         .btns{
@@ -64,6 +210,10 @@ header{
             justify-content: space-between;
             align-items: center;
             width: 80px;
+
+            @include respond-to(768){
+                width: 120px;
+            }
 
             .btn{
                 display: block;
@@ -82,12 +232,63 @@ header{
                     background-size: 28px 20px;
                 }
 
-                &:last-of-type{
+                &:nth-of-type(2){
                     width: 20px;
                     height: 20px;
                     background: url('../icons/search.svg') no-repeat center center;
                     background-size: 20px 20px;
                 }
+            }
+        }
+    }
+
+    .mobile__btn{
+        display: none;
+
+        @include respond-to(768){
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-weight: 500;
+            font-size: 18px;
+            width: 20px;
+            height: 17px;
+            position: relative;
+        }
+
+        &.active{
+
+            .line.open{
+                opacity: 0;
+            }
+
+            .line.close{
+                opacity: 1;
+
+                &:nth-of-type(4){
+                    transform: translate(-50%,-50%) rotate(-45deg);
+                }
+
+                &:last-of-type{
+                    transform: translate(-50%,-50%) rotate(45deg);
+                }
+            }
+        }
+
+        .line{
+            height: 1px;
+            border-bottom: 3px solid $c-hover;
+            border-radius: 1.5px;
+            @include transite(all);
+
+            &.close{
+                width: calc(100% + 5px);
+                position: absolute;
+                transform-origin: 50% 50%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%) rotate(0deg);
+                opacity: 0;
             }
         }
     }
@@ -98,6 +299,10 @@ header{
     background: $c-bg;
     position: relative;
     overflow: hidden;
+
+    @include respond-to(768) {
+        height: 532px;
+    }
 
     &:before{
         content: '';
@@ -116,6 +321,7 @@ header{
         display: block;
         width: 100vw;
         height: 100%;
+        top: calc(50% - 686px);
         background-image: linear-gradient(180deg, #b1b5bc, #dfe0e5 20%);
         position: absolute;
         transform: translate(-10%, 87%)rotate(-54deg);
@@ -133,6 +339,16 @@ header{
         margin: 0 auto;
         padding: 0 20px;
         position: relative;
+
+        @include respond-to(960){
+            width: 960px;
+        }
+        @include respond-to(768){
+            width: 768px;
+        }
+        @include respond-to(320){
+            width: 320px;
+        }
     }
 
     #block-views-block-slider-block-1{
@@ -146,9 +362,24 @@ header{
                 opacity: 0;
 
                 @include transite(all);
+                @include respond-to(768){
+                    height: 196px;
+                    top: 224px;
+                }
 
                 &.active{
                     opacity: 1;
+                }
+
+                img{
+
+                    @include respond-to(960){
+                        width: 450px;
+                        height: auto;
+                    }
+                    @include respond-to(768){
+                        width: 360px;
+                    }
                 }
             }
 
@@ -187,6 +418,13 @@ header{
         padding-left: 84px;
         overflow: hidden;
 
+        @include respond-to(960){
+            width: 512px;
+        }
+        @include respond-to(768){
+            width: 430px;
+        }
+
         &:before{
             content: '';
             display: block;
@@ -199,7 +437,6 @@ header{
             border: 1px dashed $c-primary;
             animation: spin 120s infinite linear;
         }
-
 
         .content{
 
@@ -233,6 +470,11 @@ header{
                     text-transform: uppercase;
                     margin-bottom: 24px;
                     display: block;
+
+                    @include respond-to(768){
+                        font-size: 14px;
+                        margin-bottom: 27px;
+                    }
 
                     &:before{
                         content: '';
@@ -325,6 +567,8 @@ header{
                     top: -130px;
                     left: 288px;
                     border-radius: 100%;
+                    animation: spin 160s infinite linear reverse;
+                    //animation-direction: alternate;
                 }
 
                 li{
@@ -475,6 +719,150 @@ footer{
 
         #web-master{
             font-size: 13px;
+        }
+    }
+}
+
+.services >div{
+    width: 1200px;
+    padding: 0 20px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 512px;
+
+    .block{
+        width: 343px;
+
+        &:hover{
+
+            .layout__region--first{
+                transform: rotate3d(0, 1, 0, 180deg);
+            }
+
+            .layout__region--third{
+                transform: rotate3d(0, 1, 0, 360deg);
+            }
+
+            svg{
+                transform: translate(-50%, 172px) scale(1);
+                opacity: .1;
+
+                path{
+                    fill: $c-accent;
+                }
+            }
+
+            p.title{
+                color: $c-primary;
+            }
+        }
+
+        >.content{
+            position: relative;
+        }
+
+        .layout__region--first{
+            backface-visibility: hidden;
+            height: 343px;
+            border-radius: 100%;
+            box-shadow: 16px 16px 45px rgba(#000, .27);
+            overflow: hidden;
+
+            @include transite(all);
+        }
+
+        .layout__region--second{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 343px;
+            z-index: 10;
+        }
+
+        .layout__region--third{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            backface-visibility: hidden;
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            height: 343px;
+            top: 0;
+            left: 0;
+            z-index: 20;
+            transform: rotate3d(0, 1, 0, 180deg);
+            border-radius: 100%;
+            box-shadow: 16px 16px 45px rgba(#000, .27);
+            padding: 36px 40px;
+
+            @include transite(all);
+
+            .subtitle{
+                font-weight: 700;
+                font-size: 18px;
+                color: $c-accent;
+                margin-bottom: 24px;
+            }
+
+            .text{
+
+                p{
+                    margin-bottom: 16px;
+                }
+            }
+
+            .link{
+                align-self: flex-end;
+
+                a{
+                    display: flex;
+                    background: $c-hover;
+                    color: #fff;
+                    width: 110px;
+                    height: 30px;
+                    justify-content: center;
+                    align-items: center;
+
+                    @include transite(all);
+
+                    &:hover{
+                        background: $c-primary;
+                    }
+                }
+            }
+        }
+
+        svg{
+            position: absolute;
+            top: -126px;
+            height: 246px;
+            width: auto;
+            left: 50%;
+            transform: translate(-50%, 180px) scale(.37);
+
+            @include transite(all);
+
+            path{
+                fill: #fff;
+
+                @include transite(all);
+            }
+        }
+
+        p.title{
+            text-align: center;
+            font-weight: 700;
+            font-size: 36px;
+            margin-top: 40px;
+            text-transform: uppercase;
+            color: $c-accent;
+
+            @include transite(all);
         }
     }
 }

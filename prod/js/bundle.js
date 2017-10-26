@@ -60,89 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _mainSlider = __webpack_require__(1);
-
-var _mainSlider2 = _interopRequireDefault(_mainSlider);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_mainSlider2.default.init();
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($) {
-
-var mainSlider = {
-
-    settings: {
-        heroSlider: $('.hero__slider'),
-        mainSlider: $('#block-views-block-slider-block-1 .content'),
-        slideImage: $('#block-views-block-slider-block-1 .content .views-row'),
-        slideTitle: $('#block-views-block-slider-block-2 .content .views-row a'),
-        currentSlide: $('.hero__slider .content .views-row.active')
-    },
-
-    init: function init() {
-        var handler = this;
-        this.settings.heroSlider.attr('data-index', 0);
-        this.settings.slideImage.each(function (i, el) {
-            $(el).attr('data-index', i);
-        });
-        this.settings.slideTitle.each(function (i, el) {
-            $(el).attr('data-index', i);
-        });
-        this.settings.slideImage.first().addClass('active');
-        this.settings.slideTitle.first().addClass('active');
-        this.settings.slideTitle.hover(function (e) {
-            var target = e.target;
-            handler.setSlide(target);
-        });
-
-        var pager = '<div class="pager"></div>';
-        var elements = [];
-        this.settings.mainSlider.append(pager);
-        this.settings.slideImage.each(function (i, el) {
-            var index = $(this).attr('data-index');
-            var bullet = '<div class="bullet" data-index="' + index + '"></div>';
-            elements.push(bullet);
-        });
-
-        this.settings.mainSlider.find('.pager').append(elements);
-
-        this.settings.pager = this.settings.mainSlider.find('.bullet');
-        this.settings.pager.first().addClass('active');
-        this.settings.pager.click(function (e) {
-            var target = e.target;
-            handler.setSlide(target);
-        });
-    },
-
-    setSlide: function setSlide(target) {
-        var index = $(target).attr('data-index');
-        this.settings.heroSlider.attr('data-index', index);
-        $('.hero__slider .content .active').removeClass('active');
-        $('.hero__slider .content *[data-index="' + index + '"').addClass('active');
-    }
-};
-
-module.exports = mainSlider;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11155,6 +11077,122 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+var _mainSlider = __webpack_require__(2);
+
+var _mainSlider2 = _interopRequireDefault(_mainSlider);
+
+var _mobileMenu = __webpack_require__(3);
+
+var _mobileMenu2 = _interopRequireDefault(_mobileMenu);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+$(document).ready(function () {
+    _mainSlider2.default.init();
+    _mobileMenu2.default.init();
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+var mainSlider = {
+
+    settings: {
+        heroSlider: $('.hero__slider'),
+        mainSlider: $('#block-views-block-slider-block-1 .content'),
+        slideImage: $('#block-views-block-slider-block-1 .content .views-row'),
+        slideTitle: $('#block-views-block-slider-block-2 .content .views-row a'),
+        currentSlide: $('.hero__slider .content .views-row.active')
+    },
+
+    init: function init() {
+        var handler = this;
+        this.settings.heroSlider.attr('data-index', 0);
+        this.settings.slideImage.each(function (i, el) {
+            $(el).attr('data-index', i);
+        });
+        this.settings.slideTitle.each(function (i, el) {
+            $(el).attr('data-index', i);
+        });
+        this.settings.slideImage.first().addClass('active');
+        this.settings.slideTitle.first().addClass('active');
+        this.settings.slideTitle.hover(function (e) {
+            var target = e.target;
+            handler.setSlide(target);
+        });
+
+        var pager = '<div class="pager"></div>';
+        var elements = [];
+        this.settings.mainSlider.append(pager);
+        this.settings.slideImage.each(function (i, el) {
+            var index = $(this).attr('data-index');
+            var bullet = '<div class="bullet" data-index="' + index + '"></div>';
+            elements.push(bullet);
+        });
+
+        this.settings.mainSlider.find('.pager').append(elements);
+
+        this.settings.pager = this.settings.mainSlider.find('.bullet');
+        this.settings.pager.first().addClass('active');
+        this.settings.pager.click(function (e) {
+            var target = e.target;
+            handler.setSlide(target);
+        });
+    },
+
+    setSlide: function setSlide(target) {
+        var index = $(target).attr('data-index');
+        this.settings.heroSlider.attr('data-index', index);
+        $('.hero__slider .content .active').removeClass('active');
+        $('.hero__slider .content *[data-index="' + index + '"').addClass('active');
+    }
+};
+
+module.exports = mainSlider;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+var mobileMenu = {
+
+    settings: {
+        menu: $('.mobile__menu'),
+        mobileBtn: $('.mobile__btn, .mobile__menu .close__btn')
+    },
+
+    init: function init() {
+        var handler = this;
+        this.settings.mobileBtn.click(function () {
+            handler.openMenu();
+        });
+    },
+
+    openMenu: function openMenu() {
+        this.settings.mobileBtn.toggleClass('active');
+        this.settings.menu.toggleClass('active');
+    }
+};
+
+module.exports = mobileMenu;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ })
 /******/ ]);

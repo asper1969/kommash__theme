@@ -1,14 +1,30 @@
+<div class="mobile__menu">
+    <div class="close__btn">
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    {{ page.header_menu }}
+</div>
 <header>
     {% if page.header_logo %}
         {{ page.header_logo }}
     {% endif %}
     <div class="container">
-        <div class="address">{{ page.header_contacts }}</div>
+        <div class="address">
+            {{ page.header_contacts }}
+        </div>
         <div class="main-menu">
             {{ page.header_menu }}
             <div class="btns">
                 <a href="#" class="btn">mail_us</a>
                 <a href="#" class="btn">search</a>
+                <a class="mobile__btn">
+                    <span class="line open"></span>
+                    <span class="line open"></span>
+                    <span class="line open"></span>
+                    <span class="line close"></span>
+                    <span class="line close"></span>
+                </a>
             </div>
         </div>
     </div>
