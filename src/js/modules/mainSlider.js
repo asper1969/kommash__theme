@@ -41,6 +41,32 @@ let mainSlider = {
             let target = e.target;
             handler.setSlide(target);
         });
+
+        let ww = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+
+        if(ww < 768){
+            //this.settings.slideTitle.unbind('hover');
+            let $titles = this.settings.slideTitle.closest('.views-row').parent();
+            let $slides = this.settings.slideImage.parent();
+
+            $('.hero__slider .container .contextual').remove();
+
+            $titles.slick({
+                slidesToShow: 1,
+                arrows: false,
+                asNavFor: $slides
+            });
+
+            $titles.slick('slickRemove', 0);
+
+            $slides.slick({
+                slidesToShow: 1,
+                fade: true,
+                asNavFor: $titles
+            });
+
+            $slides.slick('slickRemove', 0);
+        }
     },
 
     setSlide: function(target){
