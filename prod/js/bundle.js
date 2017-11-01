@@ -11093,13 +11093,28 @@ var _mobileMenu = __webpack_require__(3);
 
 var _mobileMenu2 = _interopRequireDefault(_mobileMenu);
 
-var _slickCarousel = __webpack_require__(4);
+var _carouselFront = __webpack_require__(4);
+
+var _carouselFront2 = _interopRequireDefault(_carouselFront);
+
+var _mobileCatalog = __webpack_require__(5);
+
+var _mobileCatalog2 = _interopRequireDefault(_mobileCatalog);
+
+var _slickCarousel = __webpack_require__(6);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 $(document).ready(function () {
     _mainSlider2.default.init();
     _mobileMenu2.default.init();
+    _carouselFront2.default.init();
+    _mobileCatalog2.default.init();
+
+    $('.page__wrapper.page .imgs').slick({
+        slidesToShow: 1,
+        fade: true
+    });
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
@@ -11203,7 +11218,9 @@ var mobileMenu = {
 
     settings: {
         menu: $('.mobile__menu'),
-        mobileBtn: $('.mobile__btn, .mobile__menu .close__btn')
+        mobileBtn: $('.mobile__btn, .mobile__menu .close__btn'),
+        mobileCatalog: $('.page__wrapper .sidebar'),
+        btn: $('#block-catalog-link--2 .content a')
     },
 
     init: function init() {
@@ -11214,6 +11231,8 @@ var mobileMenu = {
     },
 
     openMenu: function openMenu() {
+        this.settings.btn.removeClass('active');
+        this.settings.mobileCatalog.removeClass('active');
         this.settings.mobileBtn.toggleClass('active');
         this.settings.menu.toggleClass('active');
     }
@@ -11224,6 +11243,79 @@ module.exports = mobileMenu;
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+var carouselFront = {
+
+    settings: {
+        carousel: $('.services>div'),
+        screen: window.innerWidth > 0 ? window.innerWidth : screen.width
+    },
+
+    init: function init() {
+
+        if (this.settings.screen < 768) {
+            this.settings.carousel.slick({
+                slidesToShow: 1,
+                variableWidth: true
+            });
+        }
+    }
+};
+
+module.exports = carouselFront;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+var mobileCatalog = {
+
+    settings: {
+        catalog: $('.sidebar'),
+        btn: $('#block-catalog-link--2 .content a'),
+        mobileBtn: $('.mobile__btn, .mobile__menu .close__btn'),
+        mobileMenu: $('.mobile__menu'),
+        closeBtn: $('.page__wrapper .sidebar .close__btn')
+    },
+
+    init: function init() {
+        var handler = this;
+        this.settings.btn.click(function () {
+            handler.openCatalog();
+
+            return false;
+        });
+        this.settings.closeBtn.click(function () {
+            handler.closeCatalog();
+        });
+    },
+
+    openCatalog: function openCatalog() {
+        this.settings.mobileBtn.removeClass('active');
+        this.settings.mobileMenu.removeClass('active');
+        this.settings.catalog.toggleClass('active');
+        this.settings.btn.toggleClass('active');
+    },
+
+    closeCatalog: function closeCatalog() {
+        this.settings.catalog.removeClass('active');
+        this.settings.btn.removeClass('active');
+    }
+};
+
+module.exports = mobileCatalog;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*

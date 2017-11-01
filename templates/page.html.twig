@@ -46,48 +46,64 @@
  */
 #}
 
-
-
-<div class="layout-container">
-
-  <header role="banner">
-    {{ page.header }}
-  </header>
-
-  {{ page.primary_menu }}
-  {{ page.secondary_menu }}
-
-  {{ page.breadcrumb }}
-
-  {{ page.highlighted }}
-
-  {{ page.help }}
-
-  <main role="main">
-    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-
-    <div class="layout-content">
-      {{ page.content }}
-    </div>{# /.layout-content #}
-
-    {% if page.sidebar_first %}
-      <aside class="layout-sidebar-first" role="complementary">
-        {{ page.sidebar_first }}
-      </aside>
-    {% endif %}
-
-    {% if page.sidebar_second %}
-      <aside class="layout-sidebar-second" role="complementary">
-        {{ page.sidebar_second }}
-      </aside>
-    {% endif %}
-
-  </main>
-
-  {% if page.footer %}
-    <footer role="contentinfo">
-      {{ page.footer }}
-    </footer>
+<div class="mobile__menu">
+  <div class="close__btn">
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+  {{ page.header_menu }}
+</div>
+<header>
+  {% if page.header_logo %}
+    {{ page.header_logo }}
   {% endif %}
+  <div class="container">
+    <div class="address">
+      {{ page.header_contacts }}
+    </div>
+    <div class="main-menu">
+      {{ page.header_menu }}
+      <div class="btns">
+        <a href="#" class="btn">mail_us</a>
+        <a href="#" class="btn">search</a>
+        <a class="mobile__btn">
+          <span class="line open"></span>
+          <span class="line open"></span>
+          <span class="line open"></span>
+          <span class="line close"></span>
+          <span class="line close"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="page__wrapper page">
+  <div class="sidebar">
+    <div class="close__btn">
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+    {{ page.sidebar }}
+  </div>
+  <div class="main__content">
+    {{ page.breadcrumb }}
+    {{ page.content }}
+  </div>
+  <div class="content__suffix">
+    asdfasfd
+    {{ page.content_suffix }}
+  </div>
+</div>
+<footer>
+  <div class="container">
+    {{ page.header_logo }}
+    {{ page.footer_contacts_pages }}
+    {{ page.footer_copyright }}
+    <div id="web-master">
+      <a href="https://webmaster.kz">
+        <img width="124" height="36" src="/{{ directory }}/prod/icons/web-master.svg" alt="web-master.kz">
+      </a>
+    </div>
+  </div>
+</footer>
 
-</div>{# /.layout-container #}
