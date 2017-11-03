@@ -21,4 +21,5 @@ regions:
   footer_contacts: 'Footer contacts'
   footer_contacts_pages: 'Footer contacts pages'
   footer_copyright: 'Footer copyright'
+  hidden: 'Hidden region'
   trush: 'Trash'
