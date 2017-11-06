@@ -2,6 +2,7 @@ import mainSlider from './modules/mainSlider.js';
 import mobileMenu from './modules/mobileMenu.js';
 import carouselFront from './modules/carouselFront.js';
 import mobileCatalog from './modules/mobileCatalog.js';
+import form from './modules/form.js';
 import {slick} from 'slick-carousel';
 import niceScroll from 'jquery.nicescroll';
 
@@ -10,6 +11,7 @@ $(document).ready(function(){
     mobileMenu.init();
     carouselFront.init();
     mobileCatalog.init();
+    form.init();
 
     $('.page__wrapper.page .imgs').slick({
         slidesToShow: 1,
@@ -62,6 +64,14 @@ $(document).ready(function(){
         cursordragontouch: true,
         railoffset: {
             left: 9
+        }
+    });
+
+    $('.page__wrapper .sidebar nav>ul>li>a').each(function(i, el){
+        let category = $(this).text().trim();
+
+        if($('.page__wrapper #block-webmaster-breadcrumbs .content li a:contains(' + category + ')').length){
+            $(this).addClass('is-active');
         }
     });
 });

@@ -2,7 +2,7 @@ let mobileCatalog = {
 
     settings: {
         catalog: $('.sidebar'),
-        btn: $('#block-catalog-link--2 .content a'),
+        btn: $('#block-catalog-link>.content a'),
         mobileBtn: $('.mobile__btn, .mobile__menu .close__btn'),
         mobileMenu: $('.mobile__menu'),
         closeBtn: $('.page__wrapper .sidebar .close__btn')
